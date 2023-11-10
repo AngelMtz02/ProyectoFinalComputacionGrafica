@@ -1,0 +1,69 @@
+﻿  318350453_REPORTE10_GPO7.cpp
+C:\Users\martz\Desktop\ProyectoFinal\ProyectoFinal\318350453_REPORTE10_GPO7.cpp(204,24): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\martz\Desktop\ProyectoFinal\ProyectoFinal\318350453_REPORTE10_GPO7.cpp(242,21): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+C:\Users\martz\Desktop\ProyectoFinal\ProyectoFinal\318350453_REPORTE10_GPO7.cpp(243,21): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+C:\Users\martz\Desktop\ProyectoFinal\ProyectoFinal\318350453_REPORTE10_GPO7.cpp(244,21): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+C:\Users\martz\Desktop\ProyectoFinal\ProyectoFinal\318350453_REPORTE10_GPO7.cpp(258,22): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+C:\Users\martz\Desktop\ProyectoFinal\ProyectoFinal\318350453_REPORTE10_GPO7.cpp(259,22): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+C:\Users\martz\Desktop\ProyectoFinal\ProyectoFinal\318350453_REPORTE10_GPO7.cpp(260,22): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+C:\Users\martz\Desktop\ProyectoFinal\ProyectoFinal\318350453_REPORTE10_GPO7.cpp(272,22): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+C:\Users\martz\Desktop\ProyectoFinal\ProyectoFinal\318350453_REPORTE10_GPO7.cpp(273,22): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+C:\Users\martz\Desktop\ProyectoFinal\ProyectoFinal\318350453_REPORTE10_GPO7.cpp(274,22): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+C:\Users\martz\Desktop\ProyectoFinal\ProyectoFinal\318350453_REPORTE10_GPO7.cpp(286,22): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+C:\Users\martz\Desktop\ProyectoFinal\ProyectoFinal\318350453_REPORTE10_GPO7.cpp(287,22): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+C:\Users\martz\Desktop\ProyectoFinal\ProyectoFinal\318350453_REPORTE10_GPO7.cpp(288,22): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+C:\Users\martz\Desktop\ProyectoFinal\ProyectoFinal\318350453_REPORTE10_GPO7.cpp(574,11): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\martz\Desktop\ProyectoFinal\ProyectoFinal\318350453_REPORTE10_GPO7.cpp(575,11): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\martz\Desktop\ProyectoFinal\ProyectoFinal\318350453_REPORTE10_GPO7.cpp(579,18): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\martz\Desktop\ProyectoFinal\ProyectoFinal\318350453_REPORTE10_GPO7.cpp(580,18): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\martz\Desktop\ProyectoFinal\ProyectoFinal\318350453_REPORTE10_GPO7.cpp(582,10): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\martz\Desktop\ProyectoFinal\ProyectoFinal\318350453_REPORTE10_GPO7.cpp(583,10): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+  ProyectoFinal.vcxproj -> C:\Users\martz\Desktop\ProyectoFinal\Debug\ProyectoFinal.exe
