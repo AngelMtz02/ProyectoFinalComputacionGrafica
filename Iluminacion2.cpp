@@ -194,8 +194,14 @@ int main()
 	Model basebumpatras((char*)"Models/bumperatras/basebumper.obj");
 	Model resorte((char*)"Models/resorte/resorte.obj");
 	Model palanca((char*)"Models/palanca/palanca.obj");
-
-
+	Model display0((char*)"Models/display0/display0.obj");
+	Model display1((char*)"Models/display1/display1.obj");
+	Model display2((char*)"Models/display2/display2.obj");
+	Model display3((char*)"Models/display3/display3.obj");
+	Model moneda((char*)"Models/moneda/moneda.obj");
+	Model tope((char*)"Models/tope/tope.obj");
+	Model canica((char*)"Models/canicas/canica.obj");
+	Model canica2((char*)"Models/canicas/canica.obj");
 
 	// First, set the container's VAO (and VBO)
 	GLuint VBO, VAO;
@@ -463,6 +469,37 @@ int main()
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform4f(glGetUniformLocation(lightingShader.Program, "colorAlpha"), 1.0f, 1.0f, 1.0f, 1.0f);
 		palanca.Draw(lightingShader);
+
+		//display
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(8.0f, 4.75f, 0.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform4f(glGetUniformLocation(lightingShader.Program, "colorAlpha"), 1.0f, 1.0f, 1.0f, 1.0f);
+		display1.Draw(lightingShader);
+
+		//moneda
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-8.75f, -1.0f, 2.9f));
+		model = glm::scale(model,glm::vec3(0.25f,0.25f,0.25f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform4f(glGetUniformLocation(lightingShader.Program, "colorAlpha"), 1.0f, 1.0f, 1.0f, 1.0f);
+		moneda.Draw(lightingShader);
+
+		//tope
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-6.3f, 0.25f, 3.75f));
+		//model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform4f(glGetUniformLocation(lightingShader.Program, "colorAlpha"), 1.0f, 1.0f, 1.0f, 1.0f);
+		tope.Draw(lightingShader);
+
+		//canica 1
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-4.6f, 0.3f, -1.75f));
+		//model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform4f(glGetUniformLocation(lightingShader.Program, "colorAlpha"), 1.0f, 1.0f, 1.0f, 1.0f);
+		canica.Draw(lightingShader);
 
 		//logo bumper atras
 		// Calcular el desplazamiento con una fase inicial
