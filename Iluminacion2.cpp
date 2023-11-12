@@ -151,7 +151,7 @@ float movCanica_z = 0.0f, movCanica_x = 0.0f;
 
 #define MAX_FRAMES 100
 int i_max_steps = 90;
-int i_curr_steps = 1;//45
+int i_curr_steps = 45;//45
 typedef struct _frame
 {
 	//Variables para GUARDAR Key Frames
@@ -162,7 +162,7 @@ typedef struct _frame
 }FRAME;
 
 FRAME KeyFrame[MAX_FRAMES];
-int FrameIndex = 1;//45			//introducir datos
+int FrameIndex = 45;//45			//introducir datos
 bool play = false;
 int playIndex = 0;
 
@@ -328,6 +328,142 @@ int main()
 	//FRAME INICIAL
 	KeyFrame[0].movCanica_z = 0.0f;
 	KeyFrame[0].movCanica_x = 0.0f;
+
+	//FRAMES RESTANTES CALCULADOS
+	KeyFrame[1].movCanica_z = 0.0f;
+	KeyFrame[1].movCanica_x = -0.5f;
+
+	KeyFrame[2].movCanica_z = 0.5f;
+	KeyFrame[2].movCanica_x = -0.5f;
+
+	KeyFrame[3].movCanica_z = 1.0f;
+	KeyFrame[3].movCanica_x = -0.5f;
+
+	KeyFrame[4].movCanica_z = 1.5f;
+	KeyFrame[4].movCanica_x = -0.5f;
+
+	KeyFrame[5].movCanica_z = 2.0f;
+	KeyFrame[5].movCanica_x = -0.5f;
+
+	KeyFrame[6].movCanica_z = 2.5f;
+	KeyFrame[6].movCanica_x = -0.5f;
+
+	KeyFrame[7].movCanica_z = 3.0f;
+	KeyFrame[7].movCanica_x = -0.5f;
+
+	KeyFrame[8].movCanica_z = 3.5f;
+	KeyFrame[8].movCanica_x = -0.5f;
+
+	KeyFrame[9].movCanica_z = 3.0f;
+	KeyFrame[9].movCanica_x = 0.0f;
+
+	KeyFrame[10].movCanica_z = 2.5f;
+	KeyFrame[10].movCanica_x = 0.5f;
+
+	KeyFrame[11].movCanica_z = 2.0f;
+	KeyFrame[11].movCanica_x = 1.0f;
+
+	KeyFrame[12].movCanica_z = 1.5f;
+	KeyFrame[12].movCanica_x = 1.5f;
+
+	KeyFrame[13].movCanica_z = 1.0f;
+	KeyFrame[13].movCanica_x = 2.0f;
+
+	KeyFrame[14].movCanica_z = 0.5f;
+	KeyFrame[14].movCanica_x = 2.5f;
+
+	KeyFrame[15].movCanica_z = 0.5f;
+	KeyFrame[15].movCanica_x = 3.0f;
+
+	KeyFrame[16].movCanica_z = 0.5f;
+	KeyFrame[16].movCanica_x = 3.75f;
+
+	KeyFrame[17].movCanica_z = 0.5f;
+	KeyFrame[17].movCanica_x = 4.25f;
+
+	KeyFrame[18].movCanica_z = 0.5f;
+	KeyFrame[18].movCanica_x = 4.75f;
+
+	KeyFrame[19].movCanica_z = 0.25f;
+	KeyFrame[19].movCanica_x = 5.25f;
+
+	KeyFrame[20].movCanica_z = 0.25f;
+	KeyFrame[20].movCanica_x = 6.0f;
+
+	KeyFrame[21].movCanica_z = 0.25f;
+	KeyFrame[21].movCanica_x = 6.5f;
+
+	KeyFrame[22].movCanica_z = 0.25f;
+	KeyFrame[22].movCanica_x = 7.25f;
+
+	KeyFrame[23].movCanica_z = 0.25f;
+	KeyFrame[23].movCanica_x = 7.75f;
+
+	KeyFrame[24].movCanica_z = 0.75f;
+	KeyFrame[24].movCanica_x = 7.25f;
+
+	KeyFrame[25].movCanica_z = 1.25f;
+	KeyFrame[25].movCanica_x = 6.75f;
+
+	KeyFrame[26].movCanica_z = 1.75f;
+	KeyFrame[26].movCanica_x = 6.25f;
+
+	KeyFrame[27].movCanica_z = 2.5f;
+	KeyFrame[27].movCanica_x = 6.0f;
+
+	KeyFrame[28].movCanica_z = 3.0f;
+	KeyFrame[28].movCanica_x = 6.0f;
+
+	KeyFrame[29].movCanica_z = 3.25f;
+	KeyFrame[29].movCanica_x = 6.0f;
+
+	KeyFrame[30].movCanica_z = 3.25f;
+	KeyFrame[30].movCanica_x = 6.5f;
+
+	KeyFrame[31].movCanica_z = 3.25f;
+	KeyFrame[31].movCanica_x = 7.75f;
+
+	KeyFrame[32].movCanica_z = 2.75f;
+	KeyFrame[32].movCanica_x = 7.25f;
+
+	KeyFrame[33].movCanica_z = 2.25f;
+	KeyFrame[33].movCanica_x = 6.75f;
+
+	KeyFrame[34].movCanica_z = 1.5f;
+	KeyFrame[34].movCanica_x = 5.75f;
+
+	KeyFrame[35].movCanica_z = 1.25f;
+	KeyFrame[35].movCanica_x = 5.25f;
+
+	KeyFrame[36].movCanica_z = 1.0f;
+	KeyFrame[36].movCanica_x = 4.75f;
+
+	KeyFrame[37].movCanica_z = 1.0f;
+	KeyFrame[37].movCanica_x = 4.0f;
+
+	KeyFrame[38].movCanica_z = 1.0f;
+	KeyFrame[38].movCanica_x = 3.25f;
+
+	KeyFrame[39].movCanica_z = 0.75f;
+	KeyFrame[39].movCanica_x = 2.5f;
+
+	KeyFrame[40].movCanica_z = 0.5f;
+	KeyFrame[40].movCanica_x = 2.0f;
+
+	KeyFrame[41].movCanica_z = 0.25f;
+	KeyFrame[41].movCanica_x = 1.75f;
+
+	KeyFrame[42].movCanica_z = 0.0f;
+	KeyFrame[42].movCanica_x = 1.25f;
+
+	KeyFrame[43].movCanica_z = 0.0f;
+	KeyFrame[43].movCanica_x = 0.75f;
+
+	KeyFrame[44].movCanica_z = 0.0f;
+	KeyFrame[44].movCanica_x = 0.5f;
+
+	KeyFrame[45].movCanica_z = 0.0f;
+	KeyFrame[45].movCanica_x = 0.0f;
 
 	printf("\nTeclas para uso de Keyframes:\n1.-Presionar 9 para reproducir animacion.\n2.-Presionar 0 para volver a habilitar reproduccion de la animacion\n");
 	printf("3.-Presiona L para guardar frame\n4.-Presiona P para habilitar guardar nuevo frame\n5.-Presiona 1 para mover canica en X+\n6.-Presiona 2 para habilitar mover canica en X-\n");
