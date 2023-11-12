@@ -24,10 +24,14 @@
 #include "Camera.h"
 #include "Model.h"
 
+//variables para keyframes
+float reproduciranimacion, habilitaranimacion, guardoFrame, reinicioFrame, ciclo13, ciclo14, ciclo15, ciclo16, ciclo17, ciclo18, ciclo19, ciclo20, contador = 0;
+
 // Function prototypes
 void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode);
 void MouseCallback(GLFWwindow* window, double xPos, double yPos);
 void DoMovement();
+void inputKeyframes();
 
 // Window dimensions
 const GLuint WIDTH = 1280, HEIGHT = 720;
@@ -59,6 +63,17 @@ const float maxYLimitd = -0.005f;
 const float logoBumpSpeedatras = 2.0f; // Velocidad de la animación
 const float logoBumpHeightatras = 0.35f; // Altura máxima de la animación
 const float initialPhase = 1.5f; // Fase inicial para empezar en un punto diferente
+//animacion base miles
+float timemiles = 0.0f;
+float speedmiles = 0.5f; // Velocidad de oscilación
+float maxHeightmiles = 1.0f;
+float heightmiles = 0.0f;
+//animacion base gwen
+float timegwen = 0.0f;
+float speedgwen = 0.5f; // Velocidad de oscilación
+float maxHeightgwen = 1.0f;
+float heightgwen = 0.0f;
+
 
 // Positions of the point lights
 glm::vec3 pointLightPositions[] = {//Cada vector se cambia para que haya un point en cada esfera
@@ -129,6 +144,89 @@ glm::vec3 Light4 = glm::vec3(0);
 // Deltatime
 GLfloat deltaTime = 0.0f;	// Time between current frame and last frame
 GLfloat lastFrame = 0.0f;  	// Time of last frame
+
+//NEW// Keyframes
+float posXcanica = -4.3, posYcanica = 0.3, posZcanica = -1.65;
+float movCanica_z = 0.0f, movCanica_x = 0.0f;
+
+#define MAX_FRAMES 100
+int i_max_steps = 90;
+int i_curr_steps = 1;//45
+typedef struct _frame
+{
+	//Variables para GUARDAR Key Frames
+	float movCanica_z;		//Canica PosX
+	float movCanica_x;		//Canica PosZ
+	float movCanica_zInc;	//Canica IncX
+	float movCanica_xInc;	//Canica IncZ
+}FRAME;
+
+FRAME KeyFrame[MAX_FRAMES];
+int FrameIndex = 1;//45			//introducir datos
+bool play = false;
+int playIndex = 0;
+
+void saveFrame(void) //tecla L
+{
+
+	printf("frameindex %d\n", FrameIndex);
+
+	KeyFrame[FrameIndex].movCanica_z = movCanica_z;
+	KeyFrame[FrameIndex].movCanica_x = movCanica_x;
+	//no volatil, agregar una forma de escribir a un archivo para guardar los frames
+	FrameIndex++;
+}
+
+void resetElements(void) //Tecla 0
+{
+
+	movCanica_x = KeyFrame[0].movCanica_z;
+	movCanica_z = KeyFrame[0].movCanica_x;
+}
+
+void interpolation(void)
+{
+	KeyFrame[playIndex].movCanica_zInc = (KeyFrame[playIndex + 1].movCanica_z - KeyFrame[playIndex].movCanica_z) / i_max_steps;
+	KeyFrame[playIndex].movCanica_xInc = (KeyFrame[playIndex + 1].movCanica_x - KeyFrame[playIndex].movCanica_x) / i_max_steps;
+}
+
+
+void animate(void)
+{
+	//Movimiento del objeto con barra espaciadora
+	if (play)
+	{
+		if (i_curr_steps >= i_max_steps) //fin de animación entre frames?
+		{
+			playIndex++;
+			printf("playindex : %d\n", playIndex);
+			if (playIndex > FrameIndex - 2)	//Fin de toda la animación con último frame?
+			{
+				printf("Frame index= %d\n", FrameIndex);
+				printf("Terminó la animación\n");
+				playIndex = 0;
+				play = false;
+			}
+			else //Interpolación del próximo cuadro
+			{
+
+				i_curr_steps = 0; //Resetea contador
+				//Interpolar
+				interpolation();
+			}
+		}
+		else
+		{
+			//Dibujar Animación
+			movCanica_z += KeyFrame[playIndex].movCanica_zInc;
+			movCanica_x += KeyFrame[playIndex].movCanica_xInc;
+			i_curr_steps++;
+		}
+
+	}
+}
+
+///////////////* FIN KEYFRAMES*////////////////////////////
 
 int main()
 {
@@ -202,6 +300,8 @@ int main()
 	Model tope((char*)"Models/tope/tope.obj");
 	Model canica((char*)"Models/canicas/canica.obj");
 	Model canica2((char*)"Models/canicas/canica.obj");
+	Model milesbase((char*)"Models/milesbase/milesbase.obj");
+	Model gwenbase((char*)"Models/gwenbase/gwenbase.obj");
 
 	// First, set the container's VAO (and VBO)
 	GLuint VBO, VAO;
@@ -223,6 +323,17 @@ int main()
 
 	glm::mat4 projection = glm::perspective(camera.GetZoom(), (GLfloat)SCREEN_WIDTH / (GLfloat)SCREEN_HEIGHT, 0.1f, 100.0f);
 
+	glm::vec3 canicaPos = glm::vec3(0.0f, 0.0f, 0.0f);
+
+	//FRAME INICIAL
+	KeyFrame[0].movCanica_z = 0.0f;
+	KeyFrame[0].movCanica_x = 0.0f;
+
+	printf("\nTeclas para uso de Keyframes:\n1.-Presionar 9 para reproducir animacion.\n2.-Presionar 0 para volver a habilitar reproduccion de la animacion\n");
+	printf("3.-Presiona L para guardar frame\n4.-Presiona P para habilitar guardar nuevo frame\n5.-Presiona 1 para mover canica en X+\n6.-Presiona 2 para habilitar mover canica en X-\n");
+	printf("7.-Presiona 3 para mover canica en X-\n8.-Presiona 4 para habilitar mover canica en X-\n9.-Presiona 5 para mover canica en Z+\n10.-Presiona 6 para habilitar mover canica en Z+\n");
+	printf("11.-Presiona 7 para mover canica en Z-\n12.-Presiona 8 para habilitar mover canica en Z-\n");
+
 	// Game loop
 	while (!glfwWindowShouldClose(window))
 	{
@@ -235,6 +346,10 @@ int main()
 		// Check if any events have been activiated (key pressed, mouse moved etc.) and call corresponding response functions
 		glfwPollEvents();
 		DoMovement();
+
+		//-------Para Keyframes
+		inputKeyframes();
+		animate();
 
 		// Clear the colorbuffer
 		glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
@@ -378,18 +493,17 @@ int main()
 		glUniform4f(glGetUniformLocation(lightingShader.Program, "colorAlpha"), 1.0f, 1.0f, 1.0f, 1.0f);
 		maquina.Draw(lightingShader);
 
-	
+
+		//Spot
 		rotspot += rotationSpeed * deltaTime;
 		if (rotspot > 360.0f) {
 			rotspot -= 360.0f; // Para evitar un overflow de la variable
 		}
-
-		//Spot
-		model = glm::mat4(1.0); 
-		model = glm::translate(model, glm::vec3(6.8f, 0.8f, 3.3f)); 
-		model = glm::rotate(model, glm::radians(rotspot), glm::vec3(0.0f, 1.0f, 0.0f)); 
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model)); 
-		glUniform4f(glGetUniformLocation(lightingShader.Program, "colorAlpha"), 1.0f, 1.0f, 1.0f, 1.0f); 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(6.8f, 0.8f, 3.3f));
+		model = glm::rotate(model, glm::radians(rotspot), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform4f(glGetUniformLocation(lightingShader.Program, "colorAlpha"), 1.0f, 1.0f, 1.0f, 1.0f);
 		spot.Draw(lightingShader);
 
 
@@ -456,6 +570,20 @@ int main()
 		glUniform4f(glGetUniformLocation(lightingShader.Program, "colorAlpha"), 1.0f, 1.0f, 1.0f, 1.0f);
 		basebumpadel.Draw(lightingShader);
 
+		//logo bumper atras
+		// Calcular el desplazamiento con una fase inicial
+		float time = glfwGetTime();
+		float logoBumpOffsetatras = sin(time * logoBumpSpeedatras + initialPhase) * logoBumpHeightatras;
+		// Asegurar que el valor mínimo de -y es -0.005
+		float minY = -0.005f;
+		float translateYatras = minY + logoBumpOffsetatras;
+		translateYatras = std::max(translateYatras, minY);
+		glm::mat4 modelatras = glm::mat4(1.0);
+		modelatras = glm::translate(modelatras, glm::vec3(4.95f, translateYatras, -0.07f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(modelatras));
+		glUniform4f(glGetUniformLocation(lightingShader.Program, "colorAlpha"), 1.0f, 1.0f, 1.0f, 1.0f);
+		logobumpatras.Draw(lightingShader);
+
 		//resorte
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-8.03f, 0.35f, 4.2f));
@@ -480,7 +608,7 @@ int main()
 		//moneda
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-8.75f, -1.0f, 2.9f));
-		model = glm::scale(model,glm::vec3(0.25f,0.25f,0.25f));
+		model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform4f(glGetUniformLocation(lightingShader.Program, "colorAlpha"), 1.0f, 1.0f, 1.0f, 1.0f);
 		moneda.Draw(lightingShader);
@@ -495,31 +623,38 @@ int main()
 
 		//canica 1
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-4.6f, 0.3f, -1.75f));
+		canicaPos = glm::vec3(posXcanica + movCanica_x, posYcanica, posZcanica + movCanica_z);
+		model = glm::translate(model, canicaPos);
 		//model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform4f(glGetUniformLocation(lightingShader.Program, "colorAlpha"), 1.0f, 1.0f, 1.0f, 1.0f);
 		canica.Draw(lightingShader);
-
-		//logo bumper atras
-		// Calcular el desplazamiento con una fase inicial
-		float time = glfwGetTime();
-		float logoBumpOffsetatras = sin(time * logoBumpSpeedatras + initialPhase) * logoBumpHeightatras;
-		// Asegurar que el valor mínimo de -y es -0.005
-		float minY = -0.005f;
-		float translateYatras = minY + logoBumpOffsetatras;
-		translateYatras = std::max(translateYatras, minY);
-		glm::mat4 modelatras = glm::mat4(1.0);
-		modelatras = glm::translate(modelatras, glm::vec3(4.95f, translateYatras, -0.07f));
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(modelatras));
-		glUniform4f(glGetUniformLocation(lightingShader.Program, "colorAlpha"), 1.0f, 1.0f, 1.0f, 1.0f);
-		logobumpatras.Draw(lightingShader);
 
 		//base bumper adelante
 		model = glm::mat4(1.0);
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform4f(glGetUniformLocation(lightingShader.Program, "colorAlpha"), 1.0f, 1.0f, 1.0f, 1.0f);
 		basebumpatras.Draw(lightingShader);
+
+		//miles con base
+		time += deltaTime;
+		heightmiles = (sin(time * speedmiles) + 1.0f) * (maxHeightmiles / 2.0f);
+		if (heightmiles < 0.0f) heightmiles = 0.0f;
+		model = glm::mat4(1.0);
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-0.5f, heightmiles, -1.5f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform4f(glGetUniformLocation(lightingShader.Program, "colorAlpha"), 1.0f, 1.0f, 1.0f, 1.0f);
+		milesbase.Draw(lightingShader);
+
+		//gwen con base
+		time += deltaTime;
+		heightgwen = (sin(time * speedgwen) + 1.0f) * (maxHeightgwen / 2.0f);
+		if (heightgwen < 0.0f) heightgwen = 0.0f;
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-0.5f, heightgwen, 1.5f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform4f(glGetUniformLocation(lightingShader.Program, "colorAlpha"), 1.0f, 1.0f, 1.0f, 1.0f);
+		gwenbase.Draw(lightingShader);
 
 
 		glBindVertexArray(0);
@@ -712,4 +847,151 @@ void MouseCallback(GLFWwindow* window, double xPos, double yPos)
 	lastY = yPos;
 
 	camera.ProcessMouseMovement(xOffset, yOffset);
+}
+
+void inputKeyframes(void)
+{
+	if (keys[GLFW_KEY_9])
+	{
+		if (reproduciranimacion < 1)
+		{
+			if (play == false && (FrameIndex > 1))
+			{
+				resetElements();
+				//First Interpolation				
+				interpolation();
+				play = true;
+				playIndex = 0;
+				i_curr_steps = 0;
+				reproduciranimacion++;
+				printf("\n Presiona 0 para habilitar reproducir de nuevo la animación'\n");
+				habilitaranimacion = 0;
+
+			}
+			else
+			{
+				play = false;
+
+			}
+		}
+	}
+	if (keys[GLFW_KEY_0])
+	{
+		if (habilitaranimacion < 1 && reproduciranimacion>0)
+		{
+			printf("Ya puedes reproducir de nuevo la animación con 9'\n");
+			reproduciranimacion = 0;
+
+		}
+	}
+
+	if (keys[GLFW_KEY_L])
+	{
+		if (guardoFrame < 1)
+		{
+			saveFrame();
+			printf("movCanica_z es: %f\n", movCanica_z);
+			printf("movCanica_x es: %f\n", movCanica_x);
+
+			printf("presiona P para habilitar guardar otro frame'\n");
+			guardoFrame++;
+			reinicioFrame = 0;
+		}
+	}
+	if (keys[GLFW_KEY_P])
+	{
+		if (reinicioFrame < 1 && guardoFrame >= 1)
+		{
+			guardoFrame = 0;
+			printf("Ya puedes guardar otro frame presionando la tecla L'\n");
+		}
+	}
+
+	//MOV CANICA X+
+	if (keys[GLFW_KEY_1])
+	{
+		if (ciclo13 < 1)
+		{
+			movCanica_x += 0.25f;
+			printf("\n movCanica2_x es: %f\n", movCanica_x);
+			ciclo13++;
+			ciclo14 = 0;
+			printf("\n Presiona la tecla 2 para poder habilitar la variable\n");
+		}
+
+	}
+	if (keys[GLFW_KEY_2])
+	{
+		if (ciclo14 < 1 && ciclo13>0)
+		{
+			ciclo13 = 0;
+			printf("\n Ya puedes modificar tu variable presionando la tecla 1\n");
+		}
+	}
+
+	//MOV CANICA X-
+	if (keys[GLFW_KEY_3])
+	{
+		if (ciclo15 < 1)
+		{
+			movCanica_x -= 0.25f;
+			printf("\n movCanica2_x es: %f\n", movCanica_x);
+			ciclo15++;
+			ciclo16 = 0;
+			printf("\n Presiona la tecla 4 para poder habilitar la variable\n");
+		}
+
+	}
+	if (keys[GLFW_KEY_4])
+	{
+		if (ciclo16 < 1 && ciclo15>0)
+		{
+			ciclo15 = 0;
+			printf("\n Ya puedes modificar tu variable presionando la tecla 3\n");
+		}
+	}
+
+	//MOV CANICA2 Z+
+	if (keys[GLFW_KEY_5])
+	{
+		if (ciclo17 < 1)
+		{
+			movCanica_z += 0.25f;
+			printf("\n movCanica2_z es: %f\n", movCanica_z);
+			ciclo17++;
+			ciclo18 = 0;
+			printf("\n Presiona la tecla 6 para poder habilitar la variable\n");
+		}
+
+	}
+	if (keys[GLFW_KEY_6])
+	{
+		if (ciclo18 < 1 && ciclo17>0)
+		{
+			ciclo17 = 0;
+			printf("\n Ya puedes modificar tu variable presionando la tecla 5\n");
+		}
+	}
+
+	//MOV CANICA2 Z-
+	if (keys[GLFW_KEY_7])
+	{
+		if (ciclo19 < 1)
+		{
+			movCanica_z -= 0.25f;
+			printf("\n movCanica2_z es: %f\n", movCanica_z);
+			ciclo19++;
+			ciclo20 = 0;
+			printf("\n Presiona la tecla 8 para poder habilitar la variable\n");
+		}
+
+	}
+	if (keys[GLFW_KEY_8])
+	{
+		if (ciclo20 < 1 && ciclo19>0)
+		{
+			ciclo19 = 0;
+			printf("\n Ya puedes modificar tu variable presionando la tecla 7\n");
+		}
+	}
 }
