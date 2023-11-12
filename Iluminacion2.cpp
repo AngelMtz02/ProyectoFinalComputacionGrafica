@@ -25,7 +25,7 @@
 #include "Model.h"
 
 //variables para keyframes
-float reproduciranimacion, habilitaranimacion, guardoFrame, reinicioFrame, ciclo13, ciclo14, ciclo15, ciclo16, ciclo17, ciclo18, ciclo19, ciclo20, contador = 0;
+float reinicio=1,reproduciranimacion, habilitaranimacion, guardoFrame, reinicioFrame, ciclo13, ciclo14, ciclo15, ciclo16, ciclo17, ciclo18, ciclo19, ciclo20, contador = 0;
 
 // Function prototypes
 void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode);
@@ -47,6 +47,7 @@ bool firstMouse = true;
 glm::vec3 lightPos(0.0f, 0.0f, 0.0f);
 
 //variables
+int displays = 0;
 bool active;
 float rotFlipperIzq = 0.0f;
 float rotFlipperDer = 0.0f;
@@ -73,6 +74,19 @@ float timegwen = 0.0f;
 float speedgwen = 0.5f; // Velocidad de oscilación
 float maxHeightgwen = 1.0f;
 float heightgwen = 0.0f;
+//animacion palanca
+float despPal = 0.0f;
+float escPal = 1.0f;
+float despPal2 = 0.0f;
+//animacion oHara
+float posX;		//Variable para PosicionX
+float posY;		//Variable para PosicionY
+float posZ;		//Variable para PosicionZ
+float incX;		//Variable para IncrementoX
+float incY;		//Variable para IncrementoY
+float incZ;		//Variable para IncrementoZ
+bool anim2 = false, anim3 = false;
+float rot2 = 0.0f, rot3 = 0.0f;
 
 
 // Positions of the point lights
@@ -141,6 +155,7 @@ glm::vec3 Light2 = glm::vec3(0);
 glm::vec3 Light3 = glm::vec3(0);
 glm::vec3 Light4 = glm::vec3(0);
 
+
 // Deltatime
 GLfloat deltaTime = 0.0f;	// Time between current frame and last frame
 GLfloat lastFrame = 0.0f;  	// Time of last frame
@@ -151,7 +166,7 @@ float movCanica_z = 0.0f, movCanica_x = 0.0f;
 
 #define MAX_FRAMES 100
 int i_max_steps = 90;
-int i_curr_steps = 45;//45
+int i_curr_steps = 10;//10
 typedef struct _frame
 {
 	//Variables para GUARDAR Key Frames
@@ -162,7 +177,7 @@ typedef struct _frame
 }FRAME;
 
 FRAME KeyFrame[MAX_FRAMES];
-int FrameIndex = 45;//45			//introducir datos
+int FrameIndex = 10;//10		//introducir datos
 bool play = false;
 int playIndex = 0;
 
@@ -223,6 +238,11 @@ void animate(void)
 			i_curr_steps++;
 		}
 
+	}
+	else {
+		movCanica_x = KeyFrame[0].movCanica_z;
+		movCanica_z = KeyFrame[0].movCanica_x;
+		play = true;
 	}
 }
 
@@ -328,142 +348,34 @@ int main()
 	//FRAME INICIAL
 	KeyFrame[0].movCanica_z = 0.0f;
 	KeyFrame[0].movCanica_x = 0.0f;
-
+	
 	//FRAMES RESTANTES CALCULADOS
 	KeyFrame[1].movCanica_z = 0.0f;
 	KeyFrame[1].movCanica_x = -0.5f;
 
-	KeyFrame[2].movCanica_z = 0.5f;
+	KeyFrame[2].movCanica_z = 3.5f;
 	KeyFrame[2].movCanica_x = -0.5f;
 
-	KeyFrame[3].movCanica_z = 1.0f;
-	KeyFrame[3].movCanica_x = -0.5f;
+	KeyFrame[3].movCanica_z = 2.0f;
+	KeyFrame[3].movCanica_x = 2.0f;
 
-	KeyFrame[4].movCanica_z = 1.5f;
-	KeyFrame[4].movCanica_x = -0.5f;
+	KeyFrame[4].movCanica_z = 0.5f;
+	KeyFrame[4].movCanica_x = 6.5f;
 
-	KeyFrame[5].movCanica_z = 2.0f;
-	KeyFrame[5].movCanica_x = -0.5f;
+	KeyFrame[5].movCanica_z = 0.5f;
+	KeyFrame[5].movCanica_x = 8.0f;
 
-	KeyFrame[6].movCanica_z = 2.5f;
-	KeyFrame[6].movCanica_x = -0.5f;
+	KeyFrame[6].movCanica_z = 3.0f;
+	KeyFrame[6].movCanica_x = 6.0f;
 
 	KeyFrame[7].movCanica_z = 3.0f;
-	KeyFrame[7].movCanica_x = -0.5f;
+	KeyFrame[7].movCanica_x = 7.5f;
 
-	KeyFrame[8].movCanica_z = 3.5f;
-	KeyFrame[8].movCanica_x = -0.5f;
+	KeyFrame[8].movCanica_z = 1.5f;
+	KeyFrame[8].movCanica_x = 3.5f;
 
-	KeyFrame[9].movCanica_z = 3.0f;
-	KeyFrame[9].movCanica_x = 0.0f;
-
-	KeyFrame[10].movCanica_z = 2.5f;
-	KeyFrame[10].movCanica_x = 0.5f;
-
-	KeyFrame[11].movCanica_z = 2.0f;
-	KeyFrame[11].movCanica_x = 1.0f;
-
-	KeyFrame[12].movCanica_z = 1.5f;
-	KeyFrame[12].movCanica_x = 1.5f;
-
-	KeyFrame[13].movCanica_z = 1.0f;
-	KeyFrame[13].movCanica_x = 2.0f;
-
-	KeyFrame[14].movCanica_z = 0.5f;
-	KeyFrame[14].movCanica_x = 2.5f;
-
-	KeyFrame[15].movCanica_z = 0.5f;
-	KeyFrame[15].movCanica_x = 3.0f;
-
-	KeyFrame[16].movCanica_z = 0.5f;
-	KeyFrame[16].movCanica_x = 3.75f;
-
-	KeyFrame[17].movCanica_z = 0.5f;
-	KeyFrame[17].movCanica_x = 4.25f;
-
-	KeyFrame[18].movCanica_z = 0.5f;
-	KeyFrame[18].movCanica_x = 4.75f;
-
-	KeyFrame[19].movCanica_z = 0.25f;
-	KeyFrame[19].movCanica_x = 5.25f;
-
-	KeyFrame[20].movCanica_z = 0.25f;
-	KeyFrame[20].movCanica_x = 6.0f;
-
-	KeyFrame[21].movCanica_z = 0.25f;
-	KeyFrame[21].movCanica_x = 6.5f;
-
-	KeyFrame[22].movCanica_z = 0.25f;
-	KeyFrame[22].movCanica_x = 7.25f;
-
-	KeyFrame[23].movCanica_z = 0.25f;
-	KeyFrame[23].movCanica_x = 7.75f;
-
-	KeyFrame[24].movCanica_z = 0.75f;
-	KeyFrame[24].movCanica_x = 7.25f;
-
-	KeyFrame[25].movCanica_z = 1.25f;
-	KeyFrame[25].movCanica_x = 6.75f;
-
-	KeyFrame[26].movCanica_z = 1.75f;
-	KeyFrame[26].movCanica_x = 6.25f;
-
-	KeyFrame[27].movCanica_z = 2.5f;
-	KeyFrame[27].movCanica_x = 6.0f;
-
-	KeyFrame[28].movCanica_z = 3.0f;
-	KeyFrame[28].movCanica_x = 6.0f;
-
-	KeyFrame[29].movCanica_z = 3.25f;
-	KeyFrame[29].movCanica_x = 6.0f;
-
-	KeyFrame[30].movCanica_z = 3.25f;
-	KeyFrame[30].movCanica_x = 6.5f;
-
-	KeyFrame[31].movCanica_z = 3.25f;
-	KeyFrame[31].movCanica_x = 7.75f;
-
-	KeyFrame[32].movCanica_z = 2.75f;
-	KeyFrame[32].movCanica_x = 7.25f;
-
-	KeyFrame[33].movCanica_z = 2.25f;
-	KeyFrame[33].movCanica_x = 6.75f;
-
-	KeyFrame[34].movCanica_z = 1.5f;
-	KeyFrame[34].movCanica_x = 5.75f;
-
-	KeyFrame[35].movCanica_z = 1.25f;
-	KeyFrame[35].movCanica_x = 5.25f;
-
-	KeyFrame[36].movCanica_z = 1.0f;
-	KeyFrame[36].movCanica_x = 4.75f;
-
-	KeyFrame[37].movCanica_z = 1.0f;
-	KeyFrame[37].movCanica_x = 4.0f;
-
-	KeyFrame[38].movCanica_z = 1.0f;
-	KeyFrame[38].movCanica_x = 3.25f;
-
-	KeyFrame[39].movCanica_z = 0.75f;
-	KeyFrame[39].movCanica_x = 2.5f;
-
-	KeyFrame[40].movCanica_z = 0.5f;
-	KeyFrame[40].movCanica_x = 2.0f;
-
-	KeyFrame[41].movCanica_z = 0.25f;
-	KeyFrame[41].movCanica_x = 1.75f;
-
-	KeyFrame[42].movCanica_z = 0.0f;
-	KeyFrame[42].movCanica_x = 1.25f;
-
-	KeyFrame[43].movCanica_z = 0.0f;
-	KeyFrame[43].movCanica_x = 0.75f;
-
-	KeyFrame[44].movCanica_z = 0.0f;
-	KeyFrame[44].movCanica_x = 0.5f;
-
-	KeyFrame[45].movCanica_z = 0.0f;
-	KeyFrame[45].movCanica_x = 0.0f;
+	KeyFrame[9].movCanica_z = 0.000004f;
+	KeyFrame[9].movCanica_x = 0.000053f;
 
 	printf("\nTeclas para uso de Keyframes:\n1.-Presionar 9 para reproducir animacion.\n2.-Presionar 0 para volver a habilitar reproduccion de la animacion\n");
 	printf("3.-Presiona L para guardar frame\n4.-Presiona P para habilitar guardar nuevo frame\n5.-Presiona 1 para mover canica en X+\n6.-Presiona 2 para habilitar mover canica en X-\n");
@@ -605,10 +517,29 @@ int main()
 		glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
 		glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projection));
 
+		if (playIndex <= 2) {
+			displays = 0;
+		}
+		else {
+			if (playIndex > 2 && playIndex <= 5) {
+				displays = 1;
+			}
+			else {
+				if (playIndex > 5 && playIndex <= 7) {
+					displays = 2;
+				}
+				else {
+					if (playIndex > 7 && playIndex <= 8) {
+						displays = 3;
+					}
+					else {
+						reinicio = 0;
+					}
+				}
+			}
+		}
 
 		glm::mat4 model(1);
-
-
 
 		//Carga de modelo 
 		view = camera.GetViewMatrix();
@@ -739,7 +670,18 @@ int main()
 		model = glm::translate(model, glm::vec3(8.0f, 4.75f, 0.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform4f(glGetUniformLocation(lightingShader.Program, "colorAlpha"), 1.0f, 1.0f, 1.0f, 1.0f);
-		display1.Draw(lightingShader);
+		if (displays == 0) {
+			display0.Draw(lightingShader);
+		}
+		if (displays == 1) {
+			display1.Draw(lightingShader);
+		}
+		if (displays == 2) {
+			display2.Draw(lightingShader);
+		}
+		if (displays == 3) {
+			display3.Draw(lightingShader);
+		}
 
 		//moneda
 		model = glm::mat4(1.0);
@@ -821,12 +763,12 @@ int main()
 			glDrawArrays(GL_TRIANGLES, 0, 36);
 		}
 
+		glm::mat4 tmp = glm::mat4(1.0f); //Temp
 		model = glm::mat4(1);
 		model = glm::translate(model, spotlight.Pos);
 		model = glm::scale(model, glm::vec3(0.4f)); // Make it a smaller cube
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
-
 
 		glBindVertexArray(0);
 
@@ -853,27 +795,31 @@ void DoMovement()
 	if (keys[GLFW_KEY_W] || keys[GLFW_KEY_UP])
 	{
 		camera.ProcessKeyboard(FORWARD, deltaTime);
-
+		anim2 = true;
+		posZ -= .1;
 	}
 
 	if (keys[GLFW_KEY_S] || keys[GLFW_KEY_DOWN])
 	{
 		camera.ProcessKeyboard(BACKWARD, deltaTime);
-
+		anim2 = true;
+		posZ += .1;
 
 	}
 
 	if (keys[GLFW_KEY_A] || keys[GLFW_KEY_LEFT])
 	{
 		camera.ProcessKeyboard(LEFT, deltaTime);
-
+		anim2 = true;
+		posX -= .1;
 
 	}
 
 	if (keys[GLFW_KEY_D] || keys[GLFW_KEY_RIGHT])
 	{
 		camera.ProcessKeyboard(RIGHT, deltaTime);
-
+		anim2 = true;
+		posX += .1;
 
 	}
 	if (keys[GLFW_KEY_Z]) // Si se presiona la tecla Z y la rotación es menor a 75 grados.
@@ -899,6 +845,38 @@ void DoMovement()
 	else if (!keys[GLFW_KEY_C]) // Si se suelta la tecla X y la rotación es mayor a 0 grados.
 	{
 		rotFlipperArr = 0.0f; // Decrementa la rotación.
+	}
+	if (anim2) {
+		if (rot2 < 30.0f) {
+			rot2 += 0.1f;
+		}
+		if (rot2 >= 30.0f) {
+			anim2 = false;
+			anim3 = true;
+		}
+		if (rot3 > -30.0f) {
+			rot3 -= 0.1f;
+		}
+		if (rot3 <= -30.0f) {
+			anim2 = false;
+			anim3 = true;
+		}
+	}
+	if (anim2) {
+		if (rot2 > -30.0f) {
+			rot2 -= 0.1f;
+		}
+		if (rot2 <= 30.0f) {
+			anim3 = false;
+			anim2 = true;
+		}
+		if (rot3 < 30.0f) {
+			rot3 += 0.1f;
+		}
+		if (rot3 >= 30.0f) {
+			anim3 = false;
+			anim2 = true;
+		}
 	}
 }
 
@@ -985,9 +963,9 @@ void MouseCallback(GLFWwindow* window, double xPos, double yPos)
 	camera.ProcessMouseMovement(xOffset, yOffset);
 }
 
-void inputKeyframes(void)
+void inputKeyframes()
 {
-	if (keys[GLFW_KEY_9])
+	if (reinicio==1)
 	{
 		if (reproduciranimacion < 1)
 		{
@@ -1002,21 +980,21 @@ void inputKeyframes(void)
 				reproduciranimacion++;
 				printf("\n Presiona 0 para habilitar reproducir de nuevo la animación'\n");
 				habilitaranimacion = 0;
-
+			
 			}
 			else
 			{
 				play = false;
-
 			}
 		}
 	}
-	if (keys[GLFW_KEY_0])
+	if (reinicio==0)
 	{
 		if (habilitaranimacion < 1 && reproduciranimacion>0)
 		{
 			printf("Ya puedes reproducir de nuevo la animación con 9'\n");
 			reproduciranimacion = 0;
+			reinicio = 1;
 
 		}
 	}
@@ -1048,7 +1026,7 @@ void inputKeyframes(void)
 	{
 		if (ciclo13 < 1)
 		{
-			movCanica_x += 0.25f;
+			movCanica_x += 0.5f;
 			printf("\n movCanica2_x es: %f\n", movCanica_x);
 			ciclo13++;
 			ciclo14 = 0;
@@ -1070,7 +1048,7 @@ void inputKeyframes(void)
 	{
 		if (ciclo15 < 1)
 		{
-			movCanica_x -= 0.25f;
+			movCanica_x -= 0.5f;
 			printf("\n movCanica2_x es: %f\n", movCanica_x);
 			ciclo15++;
 			ciclo16 = 0;
@@ -1092,7 +1070,7 @@ void inputKeyframes(void)
 	{
 		if (ciclo17 < 1)
 		{
-			movCanica_z += 0.25f;
+			movCanica_z += 0.5f;
 			printf("\n movCanica2_z es: %f\n", movCanica_z);
 			ciclo17++;
 			ciclo18 = 0;
@@ -1114,7 +1092,7 @@ void inputKeyframes(void)
 	{
 		if (ciclo19 < 1)
 		{
-			movCanica_z -= 0.25f;
+			movCanica_z -= 0.5f;
 			printf("\n movCanica2_z es: %f\n", movCanica_z);
 			ciclo19++;
 			ciclo20 = 0;
