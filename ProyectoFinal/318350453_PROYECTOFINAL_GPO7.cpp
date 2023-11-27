@@ -97,7 +97,7 @@ float incZ;		//Variable para IncrementoZ
 bool anim2 = true, anim3 = false;
 bool anim4 = true, anim5 = false;
 bool anim6 = true, anim7 = false;
-float rot = 30.0f, rot2 = 0.0f, rot3 = 0.0f, rot4 = 0.0, rot5 = 0.0;
+float rot = 30.0f, rot2 = 0.0f, rot3 = 0.0f, rot4 = 0.0, rot5 = 0.0, rot6=-90.0;
 //animacion canica 2
 float xcanica2, ycanica2, zcanica2;
 bool a1, a2, a3, a4, a5, a6;
@@ -919,18 +919,18 @@ int main()
 
 		//letrero 1
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
+		model = glm::rotate(model, glm::radians(rot6), glm::vec3(0.0, 1.0, 0.0));
+		model = glm::translate(model, glm::vec3(0.0f, 0.25f, 0.0f));
+		model = glm::scale(model, glm::vec3(3.0, 3.0, 3.0));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		glUniform4f(glGetUniformLocation(lightingShader.Program, "colorAlpha"), 1.0f, 1.0f, 1.0f, 1.0f);
 		onomato1.Draw(lightingShader);
 
 		//letrero 2
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-6.3f, 0.25f, 3.75f));
-		model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
+		model = glm::rotate(model, glm::radians(rot6), glm::vec3(0.0, 1.0, 0.0));
+		model = glm::translate(model, glm::vec3(0.0f, 0.25f, 6.5f));
+		model = glm::scale(model, glm::vec3(2.0, 2.0, 2.0));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		glUniform4f(glGetUniformLocation(lightingShader.Program, "colorAlpha"), 1.0f, 1.0f, 1.0f, 1.0f);
 		onomato2.Draw(lightingShader);
 
 		//canica 1
