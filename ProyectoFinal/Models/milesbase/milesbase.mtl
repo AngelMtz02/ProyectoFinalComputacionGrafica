@@ -1,0 +1,63 @@
+newmtl milesbase:defaultSG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd hero_milesmorales01_S04_05.png
+Ni 1.00
+Ks 0.20 0.20 0.20
+Ns 23.00
+newmtl milesbase:defaultSG2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd hero_milesmorales01_S04_02.png
+Ni 1.00
+Ks 0.20 0.20 0.20
+Ns 23.00
+newmtl milesbase:defaultSG4
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd hero_milesmorales01_S04_03.png
+Ni 1.00
+Ks 0.20 0.20 0.20
+Ns 23.00
+newmtl milesbase:defaultSG6
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd hero_milesmorales01_S04_04.png
+Ni 1.00
+Ks 0.20 0.20 0.20
+Ns 23.00
+newmtl milesbase:phong2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd tubobasemiles.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl milesbase:phong3SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd basemilesesta.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl milesbase:phong4SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd logomilesesta.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00

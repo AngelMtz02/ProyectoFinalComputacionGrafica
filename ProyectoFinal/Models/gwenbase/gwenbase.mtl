@@ -1,0 +1,45 @@
+newmtl gwenbase:FBXASC053_Material0_1FBXASC0460_0FBXASC0460_0FBXASC0460SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd spider_DIFF.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 7.61
+newmtl gwenbase:FBXASC053_spidergwen_1FBXASC0460_0FBXASC0460_0FBXASC0460SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd spider_DIFF.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 7.61
+newmtl gwenbase:phong6SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd logogwenesta.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl gwenbase:phong7SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd basegwenesta.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl gwenbase:phong8SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd tubobasegwen.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
