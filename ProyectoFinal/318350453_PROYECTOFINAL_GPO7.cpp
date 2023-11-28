@@ -43,12 +43,13 @@ const GLuint WIDTH = 1280, HEIGHT = 720;
 int SCREEN_WIDTH, SCREEN_HEIGHT;
 
 // Camera
-Camera  camera(glm::vec3(0.0f, 2.0f, 4.0f));
-Camera  camera2(glm::vec3(-10.0f, 3.0f, 0.0f));
+Camera  camera(glm::vec3(-10.0f, 10.0f, 0.0f));
 GLfloat lastX = WIDTH / 2.0;
 GLfloat lastY = HEIGHT / 2.0;
 bool keys[1024];
 bool firstMouse = true;
+// Usa la posición que quieras para tu cámara fija 
+/*bool usarCamaraFija = false*/; // Variable para alternar entre cámaras
 // Light attributes
 glm::vec3 lightPos(0.0f, 0.0f, 0.0f);
 
@@ -352,11 +353,11 @@ int main()
 	Model milesbase((char*)"Models/milesbase/milesbase.obj");
 	Model gwenbase((char*)"Models/gwenbase/gwenbase.obj");
 
-	/*Model brazoderAvatar((char*)"Models/ohara/brazoderecho.obj");
+	Model brazoderAvatar((char*)"Models/ohara/brazoderecho.obj");
 	Model piernaderAvatar((char*)"Models/ohara/piernaderecha.obj");
 	Model piernaizqAvatar((char*)"Models/ohara/piernaizquierda.obj");
 	Model brazoizqAvatar((char*)"Models/ohara/brazoizquierdo.obj");
-	Model torsoAvatar((char*)"Models/ohara/torso.obj");*/
+	Model torsoAvatar((char*)"Models/ohara/torso.obj");
 	Model tubo((char*)"Models/tubo/tubo.obj");
 	Model torsoPer((char*)"Models/SpiderEscala/torso.obj");
 	Model brazoizqPer((char*)"Models/SpiderEscala/brazoizq.obj");
@@ -374,8 +375,11 @@ int main()
 	//configuracion del sonido
 	ISoundEngine* engine = createIrrKlangDevice();
 	ISoundEngine* engine2 = createIrrKlangDevice();
-	engine->play2D("media/sunflower.mp3", true);
-	engine2->play3D("media/ohara.mp3", vec3df(10, 5, 8), true);
+	engine->play2D("media/ohara.mp3", true);
+	engine2->play3D("media/sunflower.mp3", vec3df(0, 0, 0), true);
+	
+	float posOnCircle = 0;
+	const float radius = 10;
 	
 	// Set up vertex data (and buffer(s)) and attribute pointers
 	GLfloat vertices[] =
@@ -516,7 +520,6 @@ int main()
 
 
 	glm::mat4 projection = glm::perspective(camera.GetZoom(), (GLfloat)SCREEN_WIDTH / (GLfloat)SCREEN_HEIGHT, 0.1f, 100.0f);
-	glm::mat4 projection2 = glm::perspective(camera2.GetZoom(), (GLfloat)SCREEN_WIDTH / (GLfloat)SCREEN_HEIGHT, 0.1f, 100.0f);
 
 	glm::vec3 canicaPos = glm::vec3(0.0f, 0.0f, 0.0f);
 
@@ -605,9 +608,10 @@ int main()
 		// OpenGL options
 		glEnable(GL_DEPTH_TEST);
 
-
 		if (engine2)
-			engine2->setDefault3DSoundMinDistance(1.0f);
+			engine2->setDefault3DSoundMinDistance(8.0f);
+		//vec3df pos3d(radius * cosf(posOnCircle), 0, radius * sinf(posOnCircle * 0.5f));
+			//engine2->setPosition(pos3d);
 		
 
 		//Load Model
@@ -625,17 +629,17 @@ int main()
 
 		// Directional light
 		glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.direction"), -0.2f, -1.0f, -0.3f);
-		glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.ambient"), 0.65f, 0.65f, 0.65f);
-		glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.diffuse"), 0.65f, 0.65f, 0.65f);
+		glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.ambient"), 0.3f, 0.3f, 0.3f);
+		glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.diffuse"), 0.3f, 0.3f, 0.3f);
 		glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.specular"), 1.0f, 1.0f, 1.0f);
 
 
 
 		// Point light 1
 		glm::vec3 lightColor;
-		lightColor.x = abs(sin(glfwGetTime() * Light1.x));
-		lightColor.y = abs(sin(glfwGetTime() * Light1.y));
-		lightColor.z = abs(sin(glfwGetTime() * Light1.z));
+		lightColor.x = abs(2*sin(glfwGetTime() * Light1.x));
+		lightColor.y = abs(2*sin(glfwGetTime() * Light1.y));
+		lightColor.z = abs(2*sin(glfwGetTime() * Light1.z));
 		// Point light 1
 		glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[0].position"), pointLightPositions[0].x, pointLightPositions[0].y, pointLightPositions[0].z);
 		glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[0].ambient"), lightColor.x, lightColor.y, lightColor.z);
@@ -648,9 +652,9 @@ int main()
 
 		// Point light 2
 		glm::vec3 lightColor2;
-		lightColor2.x = abs(sin(glfwGetTime() * Light2.x));
-		lightColor2.y = abs(sin(glfwGetTime() * Light2.y));
-		lightColor2.z = abs(sin(glfwGetTime() * Light2.z));
+		lightColor2.x = abs(2*sin(glfwGetTime() * Light2.x));
+		lightColor2.y = abs(2*sin(glfwGetTime() * Light2.y));
+		lightColor2.z = abs(2*sin(glfwGetTime() * Light2.z));
 		// Point light 2
 		glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[3].ambient"), lightColor2.x * intensidadBrillo, lightColor2.y * intensidadBrillo, lightColor2.z * intensidadBrillo);
 		glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[3].diffuse"), lightColor2.x * intensidadBrillo, lightColor2.y * intensidadBrillo, lightColor2.z * intensidadBrillo);
@@ -665,9 +669,9 @@ int main()
 
 		// Point light 3
 		glm::vec3 lightColor3;
-		lightColor3.x = abs(sin(glfwGetTime() * Light3.x));
-		lightColor3.y = abs(sin(glfwGetTime() * Light3.y));
-		lightColor3.z = abs(sin(glfwGetTime() * Light3.z));
+		lightColor3.x = abs(6*sin(glfwGetTime() * Light3.x));
+		lightColor3.y = abs(6*sin(glfwGetTime() * Light3.y));
+		lightColor3.z = abs(6*sin(glfwGetTime() * Light3.z));
 		// Point light 3
 		glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[3].ambient"), lightColor3.x * intensidadBrillo, lightColor3.y * intensidadBrillo, lightColor3.z * intensidadBrillo);
 		glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[3].diffuse"), lightColor3.x * intensidadBrillo, lightColor3.y * intensidadBrillo, lightColor3.z * intensidadBrillo);
@@ -682,9 +686,9 @@ int main()
 
 		// Point light 4
 		glm::vec3 lightColor4;
-		lightColor4.x = abs(sin(glfwGetTime() * Light4.x));
-		lightColor4.y = abs(sin(glfwGetTime() * Light4.y));
-		lightColor4.z = abs(sin(glfwGetTime() * Light4.z));
+		lightColor4.x = abs(15*sin(glfwGetTime() * Light4.x));
+		lightColor4.y = abs(15*sin(glfwGetTime() * Light4.y));
+		lightColor4.z = abs(15*sin(glfwGetTime() * Light4.z));
 		// Point light 4
 		glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[3].ambient"), lightColor4.x * intensidadBrillo, lightColor4.y * intensidadBrillo, lightColor4.z * intensidadBrillo);
 		glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[3].diffuse"), lightColor4.x * intensidadBrillo, lightColor4.y * intensidadBrillo, lightColor4.z * intensidadBrillo);
@@ -811,8 +815,6 @@ int main()
 		glUniform4f(glGetUniformLocation(lightingShader.Program, "colorAlpha"), 1.0f, 1.0f, 1.0f, 1.0f);
 		spot.Draw(lightingShader);
 
-
-
 		//Flipper Izquierdo
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-6.5f, 0.25f, -1.6f));
@@ -821,7 +823,6 @@ int main()
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform4f(glGetUniformLocation(lightingShader.Program, "colorAlpha"), 1.0f, 1.0f, 1.0f, 1.0f);
 		flipizq.Draw(lightingShader);
-
 
 		//Flipper Derecho
 		model = glm::mat4(1.0);
@@ -841,14 +842,14 @@ int main()
 
 		//boton izquierdo
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-7.18f, 1.06f, -5.27f + traslacionBotonZ));
+		model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f + traslacionBotonZ));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform4f(glGetUniformLocation(lightingShader.Program, "colorAlpha"), 1.0f, 1.0f, 1.0f, 1.0f);
 		botonizq.Draw(lightingShader);
 
 		//boton derecho
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-7.18f, 1.15f, 5.15f + traslacionBotonX));
+		model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f + traslacionBotonX));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform4f(glGetUniformLocation(lightingShader.Program, "colorAlpha"), 1.0f, 1.0f, 1.0f, 1.0f);
 		botonder.Draw(lightingShader);
@@ -1037,53 +1038,53 @@ int main()
 		gwenbase.Draw(lightingShader);
 
 		//O hara
-		//glm::mat4 tmp = glm::mat4(1.0f); //Temp
-		//view = camera.GetViewMatrix();
-		//model = glm::mat4(1);
-		//model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0));
-		//tmp = model = glm::translate(model, glm::vec3(0, 1, 0));
-		//model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//torsoAvatar.Draw(lightingShader);
+		glm::mat4 tmp = glm::mat4(1.0f); //Temp
+		view = camera.GetViewMatrix();
+		model = glm::mat4(1);
+		model = glm::rotate(model, glm::radians(-rot6), glm::vec3(0.0f, 1.0f, 0.0));
+		tmp = model = glm::translate(model, glm::vec3(0, 1, 0));
+		model = glm::translate(model, glm::vec3(posX, 0.0, posZ));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		torsoAvatar.Draw(lightingShader);
 		//Pierna Izq
-		//view = camera.GetViewMatrix();
-		//model = glm::translate(tmp, glm::vec3(0.0f, 0.6f, 0.0f));
-		//model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		////model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0));
-		//model = glm::rotate(model, glm::radians(-rot2), glm::vec3(1.0f, 0.0f, 0.0f));
-		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//piernaderAvatar.Draw(lightingShader);
+		view = camera.GetViewMatrix();
+		model = glm::translate(tmp, glm::vec3(0.0f, 0.6f, 0.0f));
+		model = glm::translate(model, glm::vec3(posX, 0.0, posZ));
+		//model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::rotate(model, glm::radians(-rot2), glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		piernaderAvatar.Draw(lightingShader);
 
 		//Pierna Der
-		//view = camera.GetViewMatrix();
-		//model = glm::translate(tmp, glm::vec3(0.0f, 0.6f, 0.0f));
-		//model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		////model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0f));
-		//model = glm::rotate(model, glm::radians(rot2), glm::vec3(1.0f, 0.0f, 0.0f));
-		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//piernaizqAvatar.Draw(lightingShader);
+		view = camera.GetViewMatrix();
+		model = glm::translate(tmp, glm::vec3(0.0f, 0.6f, 0.0f));
+		model = glm::translate(model, glm::vec3(posX, 0.0, posZ));
+		//model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(rot2), glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		piernaizqAvatar.Draw(lightingShader);
 
 		//Brazo derecho
-		//view = camera.GetViewMatrix();
-		//model = glm::mat4(1);
-		//model = glm::translate(tmp, glm::vec3(0.0f, 0.0f, -0.0f));
-		//model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		////model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0f));
-		//model = glm::translate(model, glm::vec3(0.0f, 0.85f, 0));
-		//model = glm::rotate(model, glm::radians(rot2), glm::vec3(1.0f, 0.0f, 0.0f));
-		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//brazoderAvatar.Draw(lightingShader);
+		view = camera.GetViewMatrix();
+		model = glm::mat4(1);
+		model = glm::translate(tmp, glm::vec3(0.0f, 0.0f, -0.0f));
+		model = glm::translate(model, glm::vec3(posX, 0.0, posZ));
+		//model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(0.0f, 0.85f, 0));
+		model = glm::rotate(model, glm::radians(rot2), glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		brazoderAvatar.Draw(lightingShader);
 
 		//Brazo Izquierdo
-		//view = camera.GetViewMatrix();
-		//model = glm::mat4(1);
-		//model = glm::translate(tmp, glm::vec3(0.0f, 0.0f, -0.0f));
-		//model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		///*model = glm::rotate(model, glm::radians(rot2), glm::vec3(0.0f, 1.0f, 0.0f));*/
-		//model = glm::translate(model, glm::vec3(0.0f, 0.85f, 0));
-		//model = glm::rotate(model, glm::radians(-rot2), glm::vec3(1.0f, 0.0f, 0.0f));
-		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//brazoizqAvatar.Draw(lightingShader);
+		view = camera.GetViewMatrix();
+		model = glm::mat4(1);
+		model = glm::translate(tmp, glm::vec3(0.0f, 0.0f, -0.0f));
+		model = glm::translate(model, glm::vec3(posX, 0.0, posZ));
+		/*model = glm::rotate(model, glm::radians(rot2), glm::vec3(0.0f, 1.0f, 0.0f));*/
+		model = glm::translate(model, glm::vec3(0.0f, 0.85f, 0));
+		model = glm::rotate(model, glm::radians(-rot2), glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		brazoizqAvatar.Draw(lightingShader);
 
 		//Spider escalando
 		//tubo
@@ -1216,32 +1217,6 @@ void DoMovement()
 {
 
 	// Camera controls
-	if (keys[GLFW_KEY_W] || keys[GLFW_KEY_UP])
-	{
-		camera.ProcessKeyboard(FORWARD, deltaTime);
-		posZ -= .1;
-	}
-
-	if (keys[GLFW_KEY_S] || keys[GLFW_KEY_DOWN])
-	{
-		camera.ProcessKeyboard(BACKWARD, deltaTime);
-		posZ += .1;
-
-	}
-
-	if (keys[GLFW_KEY_A] || keys[GLFW_KEY_LEFT])
-	{
-		camera.ProcessKeyboard(LEFT, deltaTime);
-		posX -= .1;
-
-	}
-
-	if (keys[GLFW_KEY_D] || keys[GLFW_KEY_RIGHT])
-	{
-		camera.ProcessKeyboard(RIGHT, deltaTime);
-		posX += .1;
-
-	}
 	if (keys[GLFW_KEY_Z]) // Si se presiona la tecla Z y la rotación es menor a 75 grados.
 	{
 		rotFlipperIzq = 45.0f; // Incrementa la rotación.
@@ -1261,6 +1236,10 @@ void DoMovement()
 	{
 		rotFlipperDer = 0.0f; // Decrementa la rotación.
 		traslacionBotonX = 0.0f;
+	}
+	if (keys[GLFW_KEY_C]) // Si se suelta la tecla X y la rotación es mayor a 0 grados.
+	{
+		rotFlipperArr = -45.0f; // Decrementa la rotación.
 	}
 	else if (!keys[GLFW_KEY_C]) // Si se suelta la tecla X y la rotaci�n es mayor a 0 grados.
 	{
@@ -1453,11 +1432,38 @@ void DoMovement()
 // Is called whenever a key is pressed/released via GLFW
 void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode)
 {
+
 	if (GLFW_KEY_ESCAPE == key && GLFW_PRESS == action)
 	{
 		glfwSetWindowShouldClose(window, GL_TRUE);
 	}
+	if (keys[GLFW_KEY_W] || keys[GLFW_KEY_UP])
+	{
+		/*camera.ProcessKeyboard(FORWARD, deltaTime);*/
+		posZ -= .1;
+		
+	}
 
+	if (keys[GLFW_KEY_S] || keys[GLFW_KEY_DOWN])
+	{
+		//camera.ProcessKeyboard(BACKWARD, deltaTime);
+		posZ += .1;
+
+	}
+
+	if (keys[GLFW_KEY_A] || keys[GLFW_KEY_LEFT])
+	{
+		//camera.ProcessKeyboard(LEFT, deltaTime);
+		posX -= .1;
+
+	}
+
+	if (keys[GLFW_KEY_D] || keys[GLFW_KEY_RIGHT])
+	{
+		//camera.ProcessKeyboard(RIGHT, deltaTime);
+		posX += .1;
+
+	}
 	if (key >= 0 && key < 1024)
 	{
 		if (action == GLFW_PRESS)

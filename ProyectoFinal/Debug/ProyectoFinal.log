@@ -1,90 +1,95 @@
 ﻿  318350453_PROYECTOFINAL_GPO7.cpp
-C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(190,18): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
-C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(190,37): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
-C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(190,55): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
-C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(253,12): warning C4566: el carácter representado por el nombre de carácter universal '\uFFFD' no se puede representar en la página de códigos actual (1252)
-C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(589,24): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(636,21): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
+C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(191,18): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(191,37): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(191,55): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(254,12): warning C4566: el carácter representado por el nombre de carácter universal '\uFFFD' no se puede representar en la página de códigos actual (1252)
+C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(592,24): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(640,21): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
           with
           [
               T=float
           ]
-C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(637,21): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
+C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(641,21): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
           with
           [
               T=float
           ]
-C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(638,21): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
+C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(642,21): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
           with
           [
               T=float
           ]
-C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(651,22): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
+C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(655,22): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
           with
           [
               T=float
           ]
-C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(652,22): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
+C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(656,22): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
           with
           [
               T=float
           ]
-C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(653,22): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
+C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(657,22): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
           with
           [
               T=float
           ]
-C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(668,22): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
+C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(672,22): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
           with
           [
               T=float
           ]
-C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(669,22): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
+C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(673,22): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
           with
           [
               T=float
           ]
-C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(670,22): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
+C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(674,22): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
           with
           [
               T=float
           ]
-C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(685,22): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
+C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(689,22): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
           with
           [
               T=float
           ]
-C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(686,22): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
+C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(690,22): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
           with
           [
               T=float
           ]
-C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(687,22): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
+C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(691,22): warning C4244: '=': conversión de 'double' a 'T'; posible pérdida de datos
           with
           [
               T=float
           ]
-C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(884,14): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(1222,13): warning C4305: '-=': truncamiento de 'double' a 'float'
-C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(1228,13): warning C4305: '+=': truncamiento de 'double' a 'float'
-C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(1235,13): warning C4305: '-=': truncamiento de 'double' a 'float'
-C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(1242,13): warning C4305: '+=': truncamiento de 'double' a 'float'
-C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(1274,17): warning C4305: '-=': truncamiento de 'double' a 'float'
-C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(1283,17): warning C4305: '+=': truncamiento de 'double' a 'float'
-C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(1294,32): warning C4305: '+=': truncamiento de 'double' a 'float'
-C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(1301,32): warning C4305: '-=': truncamiento de 'double' a 'float'
-C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(1333,14): warning C4305: '-=': truncamiento de 'double' a 'float'
-C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(1337,15): warning C4305: '+=': truncamiento de 'double' a 'float'
-C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(1340,16): warning C4305: '-=': truncamiento de 'double' a 'float'
-C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(1345,16): warning C4305: '+=': truncamiento de 'double' a 'float'
-C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(1376,20): warning C4305: '+=': truncamiento de 'double' a 'float'
-C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(1435,19): warning C4305: '-=': truncamiento de 'double' a 'float'
-C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(1555,11): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(1556,11): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(1560,18): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(1561,18): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(1563,10): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(1564,10): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(1584,12): warning C4566: el carácter representado por el nombre de carácter universal '\uFFFD' no se puede representar en la página de códigos actual (1252)
-C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(1599,11): warning C4566: el carácter representado por el nombre de carácter universal '\uFFFD' no se puede representar en la página de códigos actual (1252)
+C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(885,14): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(1253,17): warning C4305: '-=': truncamiento de 'double' a 'float'
+C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(1262,17): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(1273,32): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(1280,32): warning C4305: '-=': truncamiento de 'double' a 'float'
+C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(1312,14): warning C4305: '-=': truncamiento de 'double' a 'float'
+C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(1316,15): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(1319,16): warning C4305: '-=': truncamiento de 'double' a 'float'
+C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(1324,16): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(1355,20): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(1414,19): warning C4305: '-=': truncamiento de 'double' a 'float'
+C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(1443,13): warning C4305: '-=': truncamiento de 'double' a 'float'
+C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(1450,13): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(1457,13): warning C4305: '-=': truncamiento de 'double' a 'float'
+C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(1464,13): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(1561,11): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(1562,11): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(1566,18): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(1567,18): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(1569,10): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(1570,10): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(1590,12): warning C4566: el carácter representado por el nombre de carácter universal '\uFFFD' no se puede representar en la página de códigos actual (1252)
+C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\ProyectoFinal\318350453_PROYECTOFINAL_GPO7.cpp(1605,11): warning C4566: el carácter representado por el nombre de carácter universal '\uFFFD' no se puede representar en la página de códigos actual (1252)
+LINK : warning LNK4098: la biblioteca predeterminada'MSVCRT' entra en conflicto con otras bibliotecas; use la biblioteca /NODEFAULTLIB:biblioteca
+soil2-debug.lib(etc1_utils.obj) : warning LNK4099: no se encontró PDB '' con 'soil2-debug.lib(etc1_utils.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+soil2-debug.lib(image_DXT.obj) : warning LNK4099: no se encontró PDB '' con 'soil2-debug.lib(image_DXT.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+soil2-debug.lib(image_helper.obj) : warning LNK4099: no se encontró PDB '' con 'soil2-debug.lib(image_helper.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
+soil2-debug.lib(SOIL2.obj) : warning LNK4099: no se encontró PDB '' con 'soil2-debug.lib(SOIL2.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
   ProyectoFinal.vcxproj -> C:\Users\martz\Desktop\ProyectoGH\ProyectoFinalComputacionGrafica\Debug\ProyectoFinal.exe
