@@ -62,6 +62,8 @@ float rotFlipperArr = 0.0f;
 float rotspot = 0.0f;
 float rotationSpeed = 45.0f; // Grados por segundo
 bool anim;
+float mov = 0.0f;
+float mov2 = 0.0f;
 //animacion bumpers adelante
 float logoBumpHeight = 0.35f; // Altura m�xima de movimiento
 float logoBumpSpeed = 1.5f; // Velocidad de movimiento
@@ -97,10 +99,13 @@ float incZ;		//Variable para IncrementoZ
 bool anim2 = true, anim3 = false;
 bool anim4 = true, anim5 = false;
 bool anim6 = true, anim7 = false;
-float rot = 30.0f, rot2 = 0.0f, rot3 = 0.0f, rot4 = 0.0, rot5 = 0.0, rot6=-90.0;
+float rot = 30.0f, rot2 = 0.0f, rot3 = 0.0f, rot4 = 0.0, rot5 = 0.0, rot6 = -90.0, rot7 = 180.0;
 //animacion canica 2
 float xcanica2, ycanica2, zcanica2;
 bool a1, a2, a3, a4, a5, a6;
+bool a10 = false;
+bool a11 = false;
+bool a12 = false;
 
 float desplazamientoY = -1.0f;
 float intensidadBrillo = 1.5f;
@@ -362,6 +367,9 @@ int main()
 	Model piederPer((char*)"Models/SpiderEscala/piernader.obj");
 	Model onomato1((char*)"Models/onomato/onomatopeya1.obj");
 	Model onomato2((char*)"Models/onomato/onomatopeya2.obj");
+	Model bonus((char*)"Models/onomato/bonus.obj");
+	Model flecha1((char*)"Models/onomato/flecha.obj");
+	Model flecha2((char*)"Models/onomato/flecha2.obj");
 
 	//configuracion del sonido
 	ISoundEngine* engine = createIrrKlangDevice();
@@ -746,10 +754,29 @@ int main()
 		}
 		if (playIndex > 5 && playIndex <= 7) {
 			displays = 2;
+			
 		}
 		if (playIndex > 7 && playIndex <= 10) {
 			displays = 3;
 		}
+
+		if (playIndex > 4 && playIndex <= 5) {
+			a12 = false;
+			a10 = true;
+		}
+		if (playIndex > 6 && playIndex <= 7) {
+			a10 = false;
+			a11 = true;
+		}
+		if (playIndex > 7 && playIndex <= 9) {
+			a11 = false;
+			a12 = true;
+		}
+		if (playIndex > 9 && playIndex <= 10) {
+			a12 = false;
+		}
+		
+
 
 		glm::mat4 model(1);
 
@@ -762,10 +789,9 @@ int main()
 		model = glm::mat4(1);
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 
-		glEnable(GL_BLEND);//Avtiva la funcionalidad para trabajar el canal alfa
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		
 
-		glDisable(GL_BLEND); //Desactiva el canal alfa 
+		
 		//Maquina
 		model = glm::mat4(1.0);
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
@@ -828,19 +854,21 @@ int main()
 		botonder.Draw(lightingShader);
 
 		//logo bumper izquierda
-		float logoBumpOffset = sin(glfwGetTime() * logoBumpSpeed) * logoBumpHeight;
+		/*float logoBumpOffset = sin(glfwGetTime() * logoBumpSpeed) * logoBumpHeight;*/
 		glm::mat4 logoBumpModel = glm::mat4(1.0);
-		float translateY = -0.005f + logoBumpOffset;
+		/*float translateY = -0.005f + logoBumpOffset;
 		translateY = std::max(translateY, maxYLimit);
-		logoBumpModel = glm::translate(logoBumpModel, glm::vec3(4.2f, translateY, -1.6f));
+		logoBumpModel = glm::translate(logoBumpModel, glm::vec3(4.2f, translateY, -1.6f));*/
+		logoBumpModel = glm::translate(logoBumpModel, glm::vec3(4.2, mov, -1.6));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(logoBumpModel));
 		logobumpizq.Draw(lightingShader);
 
 		//logo bumper derecha
 		glm::mat4 modeld = glm::mat4(1.0);
-		float translateYd = -0.005f;  // Asumiendo que este es el valor que quieres limitar
-		translateYd = std::max(translateY, maxYLimitd);
-		modeld = glm::translate(modeld, glm::vec3(4.1f, translateYd, 1.35f));
+		//float translateYd = -0.005f;  // Asumiendo que este es el valor que quieres limitar
+		//translateYd = std::max(translateY, maxYLimitd);
+		/*modeld = glm::translate(modeld, glm::vec3(4.1f, translateYd, 1.35f));*/
+		modeld = glm::translate(modeld, glm::vec3(4.1, mov2, 1.35));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(modeld));
 		glUniform4f(glGetUniformLocation(lightingShader.Program, "colorAlpha"), 1.0f, 1.0f, 1.0f, 1.0f);
 		logobumpder.Draw(lightingShader);
@@ -920,7 +948,7 @@ int main()
 		//letrero 1
 		model = glm::mat4(1.0);
 		model = glm::rotate(model, glm::radians(rot6), glm::vec3(0.0, 1.0, 0.0));
-		model = glm::translate(model, glm::vec3(0.0f, 0.25f, 0.0f));
+		model = glm::translate(model, glm::vec3(0.0f, 0.25f, -2.0f));
 		model = glm::scale(model, glm::vec3(3.0, 3.0, 3.0));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		onomato1.Draw(lightingShader);
@@ -932,6 +960,38 @@ int main()
 		model = glm::scale(model, glm::vec3(2.0, 2.0, 2.0));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		onomato2.Draw(lightingShader);
+
+		//glEnable(GL_BLEND);//Avtiva la funcionalidad para trabajar el canal alfa
+		//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		//letrero bonus
+		model = glm::mat4(1.0);
+		model = glm::rotate(model, glm::radians(rot6), glm::vec3(0.0, 1.0, 0.0));
+		model = glm::translate(model, glm::vec3(2.0f, 0.25f, -5.5f));
+		model = glm::scale(model, glm::vec3(2.0, 1.0, 2.0));
+		model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0, -1.0, 0.0));
+		glUniform4f(glGetUniformLocation(lightingShader.Program, "colorAlpha"), 1.0f, 1.0f, 1.0f, 1.0f);
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		bonus.Draw(lightingShader);
+
+		//flecha 1
+		model = glm::mat4(1.0);
+		//model = glm::rotate(model, glm::radians(rot6), glm::vec3(0.0, 1.0, 0.0));
+		model = glm::translate(model, glm::vec3(-5.5f, 0.25f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.12, 0.12, 0.12));
+		glUniform4f(glGetUniformLocation(lightingShader.Program, "colorAlpha"), 1.0f, 1.0f, 1.0f, 0.0f);
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		flecha1.Draw(lightingShader);
+
+		//flecha 2
+		model = glm::mat4(1.0);
+		model = glm::rotate(model, glm::radians(rot7), glm::vec3(0.0, 1.0, 0.0));
+		model = glm::translate(model, glm::vec3(5.0f, 0.25f, -4.3f));
+		model = glm::scale(model, glm::vec3(0.3, 0.12, 0.12));
+		glUniform4f(glGetUniformLocation(lightingShader.Program, "colorAlpha"), 1.0f, 1.0f, 1.0f, 0.0f);
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		flecha2.Draw(lightingShader);
+
+		//glDisable(GL_BLEND); //Desactiva el canal alfa 
 
 		//canica 1
 		model = glm::mat4(1.0);
@@ -1266,6 +1326,23 @@ void DoMovement()
 		if (rot4 >= 80.0) {
 			anim7 = false;
 			anim6 = true;
+		}
+	}
+	if (a10) {
+		if(mov>-0.1)
+		mov -= 0.01;
+	}
+	if(a11){
+		if (mov < 0.0) {
+			mov += 0.01;
+		}
+		if (mov2 > -0.1) {
+			mov2 -= 0.01;
+		}
+	}
+	if (a12) {
+		if (mov2 < 0.0) {
+			mov2 += 0.01;
 		}
 	}
 
