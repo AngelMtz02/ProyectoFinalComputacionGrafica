@@ -1,0 +1,22 @@
+# Blender 3.6.2 MTL File: 'None'
+# www.blender.org
+
+newmtl PinballNuevo:phong1SG6.001
+Ns 18.000004
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 3
+map_Kd rojoflipper.png
+
+newmtl PinballNuevo:phong2SG3.001
+Ns 18.000004
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 3
+map_Kd blancoflipper.png

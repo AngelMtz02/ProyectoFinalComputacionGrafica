@@ -1,0 +1,27 @@
+newmtl spot:phong1SG_001
+illum 4
+Kd 0.00 0.00 0.00
+Ka 1.00 1.00 1.00
+Tf 1.00 1.00 1.00
+map_Kd negro.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl spot:phong2SG_005
+illum 4
+Kd 0.00 0.00 0.00
+Ka 1.00 1.00 1.00
+Tf 1.00 1.00 1.00
+map_Kd blanco.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl spot:phong3SG5
+illum 4
+Kd 0.00 0.00 0.00
+Ka 1.00 1.00 1.00
+Tf 1.00 1.00 1.00
+map_Kd gris.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00

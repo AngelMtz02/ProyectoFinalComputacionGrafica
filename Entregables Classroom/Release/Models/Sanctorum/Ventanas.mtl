@@ -1,0 +1,285 @@
+newmtl Body:lambert3SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Wood.jpg
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl Body:lambert4SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Door.jpg
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl Clock:lambert2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Clock.jpg
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl Sanctorum:initialShadingGroup
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 0.00
+newmtl Sanctorum:phong1SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Vidrio.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl Sanctorum:phong1SG2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Madera.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl Sanctorum:phong2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Piedra.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl Sanctorum:phong2SG2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Dorado.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl Sanctorum:phong3SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Negro.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl Sanctorum:phong3SG2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Jade.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl Sanctorum:phong4SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Techo.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl Sanctorum:phong5SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Verde.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl Sanctorum:phong6SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Ladrillo.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl Sanctorum1:phong1SG2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Madera.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl Sanctorum1:phong2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Piedra.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl Sanctorum1:phong2SG2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Dorado.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl Sanctorum2:phong1SG2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Madera.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl Sanctorum2:phong2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Piedra.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl Sanctorum2:phong2SG2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Dorado.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl lamp:initialShadingGroup
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 0.00
+newmtl lamp:phong1SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd glass_ball_Base_color.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl lamp:phong2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd lamp_top_Base_color.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl lamp1:initialShadingGroup
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 0.00
+newmtl lamp1:phong1SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd glass_ball_Base_color.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl lamp1:phong2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd lamp_top_Base_color.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl lamp2:initialShadingGroup
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 0.00
+newmtl lamp2:phong1SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd glass_ball_Base_color.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl lamp2:phong2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd lamp_top_Base_color.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl lamp3:initialShadingGroup
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 0.00
+newmtl lamp3:phong1SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd glass_ball_Base_color.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl lamp3:phong2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd lamp_top_Base_color.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 18.00
+newmtl sillaroja:ChairRightArmSG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd chair_wood_wood1_BaseColor.jpg
+Ni 1.00
+newmtl sillaroja:lambert2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd texturasilla128.png
+Ni 1.00
+newmtl sillaroja:lambert3SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd texturacojin.png
+Ni 1.00
