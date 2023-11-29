@@ -104,10 +104,12 @@ bool animacion = false;
 float rot = 30.0f, rot2 = 0.0f, rot3 = 0.0f, rot4 = 0.0, rot5 = 0.0, rot6 = -90.0, rot7 = 180.0;
 //animacion canica 2
 float xcanica2, ycanica2, zcanica2;
-bool a1, a2, a3, a4, a5, a6;
+bool a1, a2, a3, a4, a5, a6, a7, a8, a9;
 bool a10 = false;
 bool a11 = false;
 bool a12 = false;
+bool ruta1 = true;
+bool ruta2 = false;
 
 float desplazamientoY = -1.0f;
 float intensidadBrillo = 1.5f;
@@ -375,9 +377,7 @@ int main()
 
 
 	//configuracion del sonido
-	float posOnCircle = 0;
-	const float radius = 3;
-	vec3df pos3d(radius * cosf(posOnCircle), 0, 0);
+	vec3df pos3d(3, 0, 0);
 	ISoundEngine* engine = createIrrKlangDevice();
 	ISoundEngine* engine2 = createIrrKlangDevice();
 	engine->play2D("media/ohara.mp3", true);
@@ -590,7 +590,6 @@ int main()
 	// Game loop
 	while (!glfwWindowShouldClose(window))
 	{
-		posOnCircle += 0.4f;
 		// Calculate deltatime of current frame
 		GLfloat currentFrame = glfwGetTime();
 		deltaTime = currentFrame - lastFrame;
@@ -1409,12 +1408,13 @@ void DoMovement()
 		if (ycanica2 < 0.5f) {
 			ycanica2 += 0.1f;
 		}
+		
 	}
 	if (a4) {
 		if (zcanica2 < -0.6f) {
 			zcanica2 += 0.08f;
 		}
-		if (xcanica2 > 5.0f) {
+		if (xcanica2 > 0.0f) {
 			xcanica2 -= 0.1f;
 		}
 		if (ycanica2 > 0.2f) {
@@ -1426,30 +1426,100 @@ void DoMovement()
 
 		}
 	}
-	if (a5) {
-		if (zcanica2 > -3.0f) {
-			zcanica2 -= 0.05f;
+	if (ruta1) {
+		if (a5) {
+			if (xcanica2 < 8.0) {
+				xcanica2 += 0.08;
+			}
+			if (xcanica2 >= 8.0f) {
+				a5 = false;
+				a6 = true;
+			}
 		}
-		if (xcanica2 < -2.0f) {
-			xcanica2 += 0.02f;
+		if (a6) {
+			if (xcanica2 > -3.5) {
+				xcanica2 -= 0.035;
+			}
+			if (zcanica2 > -5.0) {
+				zcanica2 -= 0.06;
+			}
+			if (zcanica2 <= -5.0) {
+				a6 = false;
+				a7 = true;
+			}
 		}
-		if (zcanica2 <= -3.0f) {
-			a5 = false;
-			a6 = true;
+		if (a7) {
+			if (xcanica2 > -1.0) {
+				xcanica2 -= 0.06;
+			}
+			if (zcanica2 < 1.0) {
+				zcanica2 += 0.01;
+			}
+			if (xcanica2 <= -1.0) {
+				a7 = false;
+				xcanica2 = 0.0;
+				zcanica2 = 0.0;
+				ruta1 = false;
+				ruta2 = true;
+			}
 		}
 	}
-	if (a6) {
-		if (xcanica2 > -2.0f) {
-			xcanica2 -= 0.1f;
+	if (ruta2) {
+		if (a5) {
+			if (zcanica2 > -3.0) {
+				zcanica2 -= 0.03;
+			}
+			if (xcanica2 < 7.0) {
+				xcanica2 += 0.07;
+			}
+			if (xcanica2 >= 7.0) {
+				a5 = false;
+				a6 = true;
+			}
 		}
-		if (zcanica2 > -4.0) {
-			zcanica2 -= 0.1;
+		if (a6) {
+			if (xcanica2 > 1.0) {
+				xcanica2 -= 0.02;
+			}
+			if (zcanica2 > -5.0) {
+				zcanica2 -= 0.05;
+			}
+			if (xcanica2 <= 1.0) {
+				a6 = false;
+				a7 = true;
+			}
 		}
-		if (xcanica2 <= -2.0f) {
-			a6 = false;
-			zcanica2 = xcanica2 = ycanica2 = 0.0f;
+		if (a7) {
+			if (zcanica2 < -2.3) {
+				zcanica2 += 0.1;
+			}
+			if (zcanica2 >= -2.3) {
+				a7 = false;
+				a8 = true;
+			}
+		}
+		if (a8) {
+			if (zcanica2 > -4.0) {
+				zcanica2 -= 0.04;
+			}
+			if (xcanica2 > -1.0) {
+				xcanica2 -= 0.05;
+			}
+			if (xcanica2 <= -1.0) {
+				a8 = false;
+				xcanica2 = 0.0;
+				zcanica2 = 0.0;
+				ruta2 = false;
+				ruta1 = true;
+			}
 		}
 	}
+	
+	/*
+	
+	if (a7) {
+
+	}*/
 }
 
 // Is called whenever a key is pressed/released via GLFW
