@@ -97,9 +97,10 @@ float incX;		//Variable para IncrementoX
 float incY;		//Variable para IncrementoY
 float incZ;		//Variable para IncrementoZ
 //Animaci�n Spider escalando
-bool anim2 = true, anim3 = false;
+bool anim2 = false, anim3 = false;
 bool anim4 = true, anim5 = false;
 bool anim6 = true, anim7 = false;
+bool animacion = false;
 float rot = 30.0f, rot2 = 0.0f, rot3 = 0.0f, rot4 = 0.0, rot5 = 0.0, rot6 = -90.0, rot7 = 180.0;
 //animacion canica 2
 float xcanica2, ycanica2, zcanica2;
@@ -209,7 +210,7 @@ bool play = false;
 int playIndex = 0;
 
 void MouseButtonCallback(GLFWwindow* window, int button, int action, int mods) {
-	if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS) {
+	if (button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS) {
 		a1 = true;  // Inicia la animaci�n
 	}
 }
@@ -372,14 +373,16 @@ int main()
 	Model flecha1((char*)"Models/onomato/flecha.obj");
 	Model flecha2((char*)"Models/onomato/flecha2.obj");
 
+
 	//configuracion del sonido
+	float posOnCircle = 0;
+	const float radius = 3;
+	vec3df pos3d(radius * cosf(posOnCircle), 0, 0);
 	ISoundEngine* engine = createIrrKlangDevice();
 	ISoundEngine* engine2 = createIrrKlangDevice();
 	engine->play2D("media/ohara.mp3", true);
-	engine2->play3D("media/sunflower.mp3", vec3df(0, 0, 0), true);
+	engine2->play3D("media/sunflower.mp3", vec3df(pos3d), true);
 	
-	float posOnCircle = 0;
-	const float radius = 10;
 	
 	// Set up vertex data (and buffer(s)) and attribute pointers
 	GLfloat vertices[] =
@@ -587,7 +590,7 @@ int main()
 	// Game loop
 	while (!glfwWindowShouldClose(window))
 	{
-
+		posOnCircle += 0.4f;
 		// Calculate deltatime of current frame
 		GLfloat currentFrame = glfwGetTime();
 		deltaTime = currentFrame - lastFrame;
@@ -610,7 +613,6 @@ int main()
 
 		if (engine2)
 			engine2->setDefault3DSoundMinDistance(8.0f);
-		//vec3df pos3d(radius * cosf(posOnCircle), 0, radius * sinf(posOnCircle * 0.5f));
 			//engine2->setPosition(pos3d);
 		
 
@@ -722,7 +724,7 @@ int main()
 		glm::mat4 view;
 		view = camera.GetViewMatrix();
 
-		vec3df listenerPos = vec3df(0+posX, 0+posY, 0+posZ);
+		vec3df listenerPos = vec3df(0, 0, 0);
 		vec3df listenerLookDir = vec3df(0, 0, 1);
 		engine->setListenerPosition(listenerPos, listenerLookDir);
 
@@ -1215,7 +1217,47 @@ int main()
 // Moves/alters the camera positions based on user input
 void DoMovement()
 {
+	if (keys[GLFW_KEY_W] || keys[GLFW_KEY_UP])
+	{
+		/*camera.ProcessKeyboard(FORWARD, deltaTime);*/
+		if (posZ > -7.5) {
+			posZ -= .1;
+		}
+		animacion = true;
+	}
 
+	if (keys[GLFW_KEY_S] || keys[GLFW_KEY_DOWN])
+	{
+		//camera.ProcessKeyboard(BACKWARD, deltaTime);
+		if (posZ < 7.5) {
+			posZ += .1;
+		}
+		animacion = true;
+
+	}
+	if (keys[GLFW_KEY_A] || keys[GLFW_KEY_LEFT])
+	{
+		//camera.ProcessKeyboard(LEFT, deltaTime);
+		if (posX > -4.0) {
+			posX -= .1;
+		}
+		animacion = true;
+
+	}
+	if (keys[GLFW_KEY_D] || keys[GLFW_KEY_RIGHT])
+	{
+		//camera.ProcessKeyboard(RIGHT, deltaTime);
+		if (posX < 4.0f) {
+			posX += .1;
+		}
+		animacion = true;
+	}
+	if (!keys[GLFW_KEY_W] && !keys[GLFW_KEY_D]) {
+		if (!keys[GLFW_KEY_A] && !keys[GLFW_KEY_S]) {
+			animacion = false;
+			rot2 = 0.0f;
+		}
+	}
 	// Camera controls
 	if (keys[GLFW_KEY_Z]) // Si se presiona la tecla Z y la rotación es menor a 75 grados.
 	{
@@ -1245,28 +1287,18 @@ void DoMovement()
 	{
 		rotFlipperArr = 0.0f; // Decrementa la rotaci�n.
 	}
-	if (anim2) {
-		if (rot2 < 35.0f) {
-			rot2 += 0.5f;
+	if (animacion) {
+		if (anim2) {
+			rot2 += 0.5;
+			if (rot2 >= 30.0f) {
+				anim2 = false;
+			}
 		}
-		if (rot3 > -30) {
-			rot3 -= 0.416;
-		}
-		if (rot2 >= 35.0f) {
-			anim2 = false;
-			anim3 = true;
-		}
-	}
-	if (anim3) {
-		if (rot3 < 30) {
-			rot3 += 0.416;
-		}
-		if (rot2 > -35.0f) {
-			rot2 -= 0.5f;
-		}
-		if (rot2 <= -35.0f) {
-			anim3 = false;
-			anim2 = true;
+		else {
+			rot2 -= 0.5;
+			if (rot2 <= -30.0f) {
+				anim2 = true;
+			}
 		}
 	}
 	if (anim4) {
@@ -1418,15 +1450,6 @@ void DoMovement()
 			zcanica2 = xcanica2 = ycanica2 = 0.0f;
 		}
 	}
-
-	if (GLFW_KEY_V) {
-		cambioCam1 = true;
-		cambioCam2 = false;
-	}
-	if (GLFW_KEY_B) {
-		cambioCam1 = false;
-		cambioCam2 = true;
-	}
 }
 
 // Is called whenever a key is pressed/released via GLFW
@@ -1436,33 +1459,6 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode
 	if (GLFW_KEY_ESCAPE == key && GLFW_PRESS == action)
 	{
 		glfwSetWindowShouldClose(window, GL_TRUE);
-	}
-	if (keys[GLFW_KEY_W] || keys[GLFW_KEY_UP])
-	{
-		/*camera.ProcessKeyboard(FORWARD, deltaTime);*/
-		posZ -= .1;
-		
-	}
-
-	if (keys[GLFW_KEY_S] || keys[GLFW_KEY_DOWN])
-	{
-		//camera.ProcessKeyboard(BACKWARD, deltaTime);
-		posZ += .1;
-
-	}
-
-	if (keys[GLFW_KEY_A] || keys[GLFW_KEY_LEFT])
-	{
-		//camera.ProcessKeyboard(LEFT, deltaTime);
-		posX -= .1;
-
-	}
-
-	if (keys[GLFW_KEY_D] || keys[GLFW_KEY_RIGHT])
-	{
-		//camera.ProcessKeyboard(RIGHT, deltaTime);
-		posX += .1;
-
 	}
 	if (key >= 0 && key < 1024)
 	{
